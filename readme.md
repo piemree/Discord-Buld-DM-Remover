@@ -78,11 +78,11 @@ async function deleteUserMessages(messageCount) {
 
   async function deleteMessages() {
     const messageIds = getUserMessages();
-    console.log(**`Last ${messageIds.length} messages to be deleted:`**);
+    console.log(`Last ${messageIds.length} messages to be deleted:`);
     console.log(messageIds);
 
-**    for (const messageId of messageIds) {
-**      const url = `https://discord.com/api/v9/channels/${channelId}/messages/${messageId}`;
+    for (const messageId of messageIds) {
+      const url = `https://discord.com/api/v9/channels/${channelId}/messages/${messageId}`;
       try {
         const response = await fetch(url, {
           method: 'DELETE',
@@ -91,26 +91,26 @@ async function deleteUserMessages(messageCount) {
             'Content-Type': 'application/json'
           }
         });
-
+      
         if (!response.ok) {
           console.error(`Failed to delete message: ${messageId}`, response.statusText);
         } else {
           console.log(`Message deleted: ${messageId}`);
         }
-
+      
         await new Promise(resolve => setTimeout(resolve, 1000));
       } catch (error) {
         console.error(`Error occurred: ${messageId}`, error);
       }
-**    }**
+    }
 
-**    const remainingMessages = getUserMessages();
-**    if (remainingMessages.length > 0) {
+    const remainingMessages = getUserMessages();
+    if (remainingMessages.length > 0) {
       console.log('More messages found. Continuing deletion...');
       await deleteMessages();
     } else {
       console.log('Deletion process completed.');
-**    }**
+    }
   }
 
   await deleteMessages();
