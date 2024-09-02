@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Discord Message Deleter</title>
+    <style>
+      body {
+        width: 300px;
+        padding: 10px;
+      }
+      input,
+      button {
+        margin: 5px 0;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Discord Message Deleter</h2>
+    <input
+      type="number"
+      id="messageCount"
+      placeholder="Number of messages to delete"
+      value="1"
+    />
+    <button id="deleteButton">Delete Messages</button>
+    <div id="status"></div>
+    <script src="popup.js"></script>
+  </body>
+</html>
